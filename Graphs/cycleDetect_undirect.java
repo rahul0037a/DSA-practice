@@ -43,8 +43,11 @@ public class cycleDetect_undirect {
         vis[curr]=true;
         for(int i=0; i<graph[curr].size();i++){
             Edge e = graph[curr].get(i);
-            if(!vis[e.dest] && detectCycleUtil(graph, vis, e.dest, curr)){
-                return true;
+            if(!vis[e.dest] ){
+                if (detectCycleUtil(graph, vis, e.dest, curr)) {
+                    return true;
+                }
+                
             }
             else if(vis[e.dest] && e.dest!=parent){
                 return true;
